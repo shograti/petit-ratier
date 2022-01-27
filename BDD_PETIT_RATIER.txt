@@ -1,0 +1,112 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: USER
+#------------------------------------------------------------
+
+CREATE TABLE USER(
+        id_user            Int  Auto_increment  NOT NULL ,
+        pseudo_user        Varchar (255) NOT NULL ,
+        email_user         Varchar (255) NOT NULL ,
+        name_user          Varchar (255) NOT NULL ,
+        firstname_user     Varchar (255) NOT NULL ,
+        birthdate_user     Date NOT NULL ,
+        distance_user      Float NOT NULL ,
+        url_img_user       Varchar (255) NOT NULL ,
+        posX_user          Float NOT NULL ,
+        posY_user          Float NOT NULL ,
+        password_user      Varchar (255) NOT NULL ,
+        register_date_user Date NOT NULL ,
+        rating_user        Int NOT NULL ,
+        role_user          Varchar (20) NOT NULL
+	,CONSTRAINT USER_PK PRIMARY KEY (id_user)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: TYPE
+#------------------------------------------------------------
+
+CREATE TABLE TYPE(
+        id_type Int  Auto_increment  NOT NULL ,
+        type    Varchar (255) NOT NULL
+	,CONSTRAINT TYPE_PK PRIMARY KEY (id_type)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: SHOP
+#------------------------------------------------------------
+
+CREATE TABLE SHOP(
+        osm_id        Int  Auto_increment  NOT NULL ,
+        name_shop     Varchar (255) NOT NULL ,
+        posY_shop     Float NOT NULL ,
+        posX_shop     Float NOT NULL ,
+        schedule_shop Varchar (255) ,
+        shop_logo     Varchar (255) NOT NULL
+	,CONSTRAINT SHOP_PK PRIMARY KEY (osm_id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: OFFER
+#------------------------------------------------------------
+
+CREATE TABLE OFFER(
+        id_offer          Int  Auto_increment  NOT NULL ,
+        name_offer        Varchar (255) NOT NULL ,
+        picture_offer     Varchar (255) NOT NULL ,
+        description_offer Varchar (255) NOT NULL ,
+        quantity_offer    Int NOT NULL ,
+        start_offer       Date NOT NULL ,
+        end_offer         Date NOT NULL ,
+        isValide_offer    Bool NOT NULL ,
+        initial_price     Float ,
+        solded_price      Float NOT NULL ,
+        post_date         Date NOT NULL ,
+        id_type           Int NOT NULL ,
+        id_user           Int NOT NULL ,
+        osm_id            Int NOT NULL
+	,CONSTRAINT OFFER_PK PRIMARY KEY (id_offer)
+
+	,CONSTRAINT OFFER_TYPE_FK FOREIGN KEY (id_type) REFERENCES TYPE(id_type)
+	,CONSTRAINT OFFER_USER0_FK FOREIGN KEY (id_user) REFERENCES USER(id_user)
+	,CONSTRAINT OFFER_SHOP1_FK FOREIGN KEY (osm_id) REFERENCES SHOP(osm_id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: ADVICE
+#------------------------------------------------------------
+
+CREATE TABLE ADVICE(
+        advice_id   Int  Auto_increment  NOT NULL ,
+        rating      TinyINT NOT NULL ,
+        comment     Text NOT NULL ,
+        advice_date Date NOT NULL ,
+        id_user     Int NOT NULL ,
+        id_offer    Int NOT NULL
+	,CONSTRAINT ADVICE_PK PRIMARY KEY (advice_id)
+
+	,CONSTRAINT ADVICE_USER_FK FOREIGN KEY (id_user) REFERENCES USER(id_user)
+	,CONSTRAINT ADVICE_OFFER0_FK FOREIGN KEY (id_offer) REFERENCES OFFER(id_offer)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: research
+#------------------------------------------------------------
+
+CREATE TABLE research(
+        id_type Int NOT NULL ,
+        id_user Int NOT NULL
+	,CONSTRAINT research_PK PRIMARY KEY (id_type,id_user)
+
+	,CONSTRAINT research_TYPE_FK FOREIGN KEY (id_type) REFERENCES TYPE(id_type)
+	,CONSTRAINT research_USER0_FK FOREIGN KEY (id_user) REFERENCES USER(id_user)
+)ENGINE=InnoDB;
+

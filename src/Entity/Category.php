@@ -2,17 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type
+ * Category
  *
- * @ORM\Table(name="type")
- * @ORM\Entity(repositoryClass= "App\Repository\TypeRepository")
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass= "App\Repository\CategoryRepository")
  */
-class Type
+class Category
 {
     /**
      * @var int
@@ -51,47 +49,6 @@ class Type
     public function __construct()
     {
         $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function getIdType(): ?int
-    {
-        return $this->idType;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->idUser;
-    }
-
-    public function addIdUser(User $idUser): self
-    {
-        if (!$this->idUser->contains($idUser)) {
-            $this->idUser[] = $idUser;
-        }
-
-        return $this;
-    }
-
-    public function removeIdUser(User $idUser): self
-    {
-        $this->idUser->removeElement($idUser);
-
-        return $this;
     }
 
 }

@@ -5,14 +5,17 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
+ * @ORM\Entity
  * @ORM\Entity(repositoryClass= "App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @var int
@@ -115,23 +118,9 @@ class User
     private $roleUser;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tracker_user", type="string", length=1000, nullable=false)
-     */
-    private $trackerUser;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ip_user", type="string", length=30, nullable=false)
-     */
-    private $ipUser;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="idUser")
+     * @ORM\ManyToMany(targetEntity="Type", mappedBy="idUser")
      */
     private $idType;
 
@@ -304,39 +293,15 @@ class User
         return $this;
     }
 
-    public function getTrackerUser(): ?string
-    {
-        return $this->trackerUser;
-    }
-
-    public function setTrackerUser(string $trackerUser): self
-    {
-        $this->trackerUser = $trackerUser;
-
-        return $this;
-    }
-
-    public function getIpUser(): ?string
-    {
-        return $this->ipUser;
-    }
-
-    public function setIpUser(string $ipUser): self
-    {
-        $this->ipUser = $ipUser;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|Category[]
+     * @return Collection|Type[]
      */
     public function getIdType(): Collection
     {
         return $this->idType;
     }
 
-    public function addIdType(Category $idType): self
+    public function addIdType(Type $idType): self
     {
         if (!$this->idType->contains($idType)) {
             $this->idType[] = $idType;
@@ -346,7 +311,7 @@ class User
         return $this;
     }
 
-    public function removeIdType(Category $idType): self
+    public function removeIdType(Type $idType): self
     {
         if ($this->idType->removeElement($idType)) {
             $idType->removeIdUser($this);
@@ -355,4 +320,25 @@ class User
         return $this;
     }
 
+    public function getRoles(): array
+    {
+        $roles=[$this->roleUser];
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->emailUser;
+    }
+
+    public function getPassword(): ?string
+    {
+       return $this->passwordUser;
+    }
 }

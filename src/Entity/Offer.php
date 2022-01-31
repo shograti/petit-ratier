@@ -128,5 +128,178 @@ class Offer
      */
     private $idType;
 
+    public function getIdOffer(): ?int
+    {
+        return $this->idOffer;
+    }
+
+    public function getNameOffer(): ?string
+    {
+        return $this->nameOffer;
+    }
+
+    public function setNameOffer(string $nameOffer): self
+    {
+        $this->nameOffer = $nameOffer;
+
+        return $this;
+    }
+
+    public function getPictureOffer(): ?string
+    {
+        return $this->pictureOffer;
+    }
+
+    public function setPictureOffer(string $pictureOffer): self
+    {
+        $this->pictureOffer = $pictureOffer;
+
+        return $this;
+    }
+
+    public function getDescriptionOffer(): ?string
+    {
+        return $this->descriptionOffer;
+    }
+
+    public function setDescriptionOffer(string $descriptionOffer): self
+    {
+        $this->descriptionOffer = $descriptionOffer;
+
+        return $this;
+    }
+
+    public function getQuantityOffer(): ?int
+    {
+        return $this->quantityOffer;
+    }
+
+    public function setQuantityOffer(int $quantityOffer): self
+    {
+        $this->quantityOffer = $quantityOffer;
+
+        return $this;
+    }
+
+    public function getStartOffer(): ?\DateTimeInterface
+    {
+        return $this->startOffer;
+    }
+
+    public function setStartOffer(\DateTimeInterface $startOffer): self
+    {
+        $this->startOffer = $startOffer;
+
+        return $this;
+    }
+
+    public function getEndOffer(): ?\DateTimeInterface
+    {
+        return $this->endOffer;
+    }
+
+    public function setEndOffer(\DateTimeInterface $endOffer): self
+    {
+        $this->endOffer = $endOffer;
+
+        return $this;
+    }
+
+    public function getIsvalideOffer(): ?bool
+    {
+        return $this->isvalideOffer;
+    }
+
+    public function setIsvalideOffer(bool $isvalideOffer): self
+    {
+        $this->isvalideOffer = $isvalideOffer;
+
+        return $this;
+    }
+
+    public function getInitialPrice(): ?float
+    {
+        return $this->initialPrice;
+    }
+
+    public function setInitialPrice(?float $initialPrice): self
+    {
+        $this->initialPrice = $initialPrice;
+
+        return $this;
+    }
+
+    public function getSoldedPrice(): ?float
+    {
+        return $this->soldedPrice;
+    }
+
+    public function setSoldedPrice(float $soldedPrice): self
+    {
+        $this->soldedPrice = $soldedPrice;
+
+        return $this;
+    }
+
+    public function getPostDate(): ?\DateTimeInterface
+    {
+        return $this->postDate;
+    }
+
+    public function setPostDate(\DateTimeInterface $postDate): self
+    {
+        $this->postDate = $postDate;
+
+        return $this;
+    }
+
+    public function getSlugOffer(): ?string
+    {
+        return $this->slugOffer;
+    }
+
+    public function setSlugOffer(string $slugOffer): self
+    {
+        $this->slugOffer = $slugOffer;
+
+        return $this;
+    }
+
+    public function getOsm(): ?Shop
+    {
+        return $this->osm;
+    }
+
+    public function setOsm(?Shop $osm): self
+    {
+        $this->osm = $osm;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    public function getIdType(): ?Category
+    {
+        return $this->idType;
+    }
+
+    public function setIdType(?Category $idType): self
+    {
+        $this->idType = $idType;
+
+        return $this;
+    }
+
 
 }

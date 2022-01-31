@@ -29,7 +29,7 @@ class OfferType extends AbstractType
             //->add('slugOffer')
             //->add('osm')
             //->add('idUser')
-            ->add('idType', EntityType::class,['class'=>Category::class, 'choice_label'=>'type', 'multiple' => true, 'expanded'=>false])
+            ->add('idType', EntityType::class,['class'=>Category::class, 'choice_label'=>'type'])
             ->add('save', SubmitType::class, ['label' => 'Create Offer'])
         ;
     }

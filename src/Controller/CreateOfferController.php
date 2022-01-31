@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CreateOfferController extends AbstractController
 {
     #[Route('/dashboard/create', name: 'create_offer')]
-    public function creerOffer(Request $request,EntityManagerInterface $manager,/* UserInterface $user */): Response
+    public function creerOffer(Request $request,EntityManagerInterface $manager, UserInterface $user): Response
     
     {
         $slugify = new Slugify();
@@ -32,19 +32,17 @@ class CreateOfferController extends AbstractController
 
             //Placeholders
 
-            /* $offer->setIdUser($user); */
+             $offer->setIdUser($user);
 
            
-            $offer->setIdUser(1);
-            $offer->setOsm(1);
-            $offer->isvalideOffer(true);
+            $offer->setIsvalideOffer(true);
 
 
 
 
             $manager->persist($offer);
             $manager->flush();
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('home');
         
         }
         return $this->render('user_dashboard/create-offer.html.twig', [

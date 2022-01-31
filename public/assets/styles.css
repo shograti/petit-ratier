@@ -1,0 +1,17 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+.create-offer-page{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.create-offer-content{
+    display:flex;
+    flex-direction:column;
+    
+}

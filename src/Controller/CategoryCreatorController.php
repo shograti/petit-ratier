@@ -13,14 +13,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CategoryCreatorController extends AbstractController
 {
     #[Route('/admin/categories', name: 'category_creator')]
-    public function index(Request $request,EntityManagerInterface $manager,/* UserInterface $user */): Response
+    public function index(Request $request,EntityManagerInterface $manager,UserInterface $user ): Response
     {
         
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /* $offer->addIdUser($user); */
+            $offer->addIdUser($user);
             $manager->persist($category);
         }
 

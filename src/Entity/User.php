@@ -120,7 +120,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Type", mappedBy="idUser")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="idUser")
      */
     private $idType;
 

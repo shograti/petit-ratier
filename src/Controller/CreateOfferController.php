@@ -34,7 +34,7 @@ class CreateOfferController extends AbstractController
 
             /* $offer->setIdUser($user); */
 
-            $offer->setIdType(1);
+           
             $offer->setIdUser(1);
             $offer->setOsm(1);
             $offer->isvalideOffer(true);

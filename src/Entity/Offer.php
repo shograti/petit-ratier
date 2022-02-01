@@ -128,6 +128,8 @@ class Offer
      */
     private $idType;
 
+
+
     public function getIdOffer(): ?int
     {
         return $this->idOffer;

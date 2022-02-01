@@ -53,6 +53,11 @@ class Category
         $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+{
+    return (string) $this->getType();
+}
+
     public function getIdType(): ?int
     {
         return $this->idType;

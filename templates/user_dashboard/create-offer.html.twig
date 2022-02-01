@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Offer{% endblock %}
+
+{% block body %}
+<div class="create-offer-page">
+
+{{form_start(form)}}
+<div class="create-offer-content">
+{{form_row(form.nameOffer)}}
+{{form_row(form.pictureOffer)}}
+{{form_row(form.descriptionOffer)}}
+{{form_row(form.quantityOffer)}}
+{{form_row(form.initialPrice)}}
+{{form_row(form.soldedPrice)}}
+{{form_row(form.startOffer)}}
+{{form_row(form.endOffer)}}
+{{form_row(form.idType)}}
+{{form_row(form.save)}}
+</div>
+{{form_end(form)}}
+</div>
+
+
+
+{% endblock %}

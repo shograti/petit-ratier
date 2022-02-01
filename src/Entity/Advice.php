@@ -7,10 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Advice
  *
- * @ORM\Table(name="advice", indexes={@ORM\Index(name="ADVICE_USER_FK", columns={"id_user"}), @ORM\Index(name="ADVICE_OFFER0_FK", columns={"id_offer"})})
- * @ORM\Entity
+ * @ORM\Table(name="advice", indexes={@ORM\Index(name="ADVICE_OFFER0_FK", columns={"id_offer"}), @ORM\Index(name="ADVICE_USER_FK", columns={"id_user"})})
  * @ORM\Entity(repositoryClass= "App\Repository\AdviceRepository")
- *
  */
 class Advice
 {
@@ -45,16 +43,6 @@ class Advice
     private $adviceDate;
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
-     * })
-     */
-    private $idUser;
-
-    /**
      * @var \Offer
      *
      * @ORM\ManyToOne(targetEntity="Offer")
@@ -63,6 +51,16 @@ class Advice
      * })
      */
     private $idOffer;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     * })
+     */
+    private $idUser;
 
     public function getAdviceId(): ?int
     {
@@ -105,18 +103,6 @@ class Advice
         return $this;
     }
 
-    public function getIdUser(): ?User
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?User $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
     public function getIdOffer(): ?Offer
     {
         return $this->idOffer;
@@ -125,6 +111,18 @@ class Advice
     public function setIdOffer(?Offer $idOffer): self
     {
         $this->idOffer = $idOffer;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }

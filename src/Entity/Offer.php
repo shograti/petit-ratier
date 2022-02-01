@@ -7,8 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Offer
  *
- * @ORM\Table(name="offer", indexes={@ORM\Index(name="OFFER_TYPE_FK", columns={"id_type"}), @ORM\Index(name="OFFER_USER0_FK", columns={"id_user"}), @ORM\Index(name="OFFER_SHOP1_FK", columns={"osm_id"})})
- * @ORM\Entity
+ * @ORM\Table(name="offer", indexes={@ORM\Index(name="OFFER_USER0_FK", columns={"id_user"}), @ORM\Index(name="OFFER_SHOP1_FK", columns={"osm_id"}), @ORM\Index(name="OFFER_TYPE_FK", columns={"id_type"})})
  * @ORM\Entity(repositoryClass= "App\Repository\OfferRepository")
  */
 class Offer
@@ -93,14 +92,11 @@ class Offer
     private $postDate;
 
     /**
-     * @var \Type
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Type")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type", referencedColumnName="id_type")
-     * })
+     * @ORM\Column(name="slug_offer", type="string", length=10000, nullable=false)
      */
-    private $idType;
+    private $slugOffer;
 
     /**
      * @var \Shop
@@ -121,6 +117,16 @@ class Offer
      * })
      */
     private $idUser;
+
+    /**
+     * @var \Category
+     *
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type", referencedColumnName="id_type")
+     * })
+     */
+    private $idType;
 
     public function getIdOffer(): ?int
     {
@@ -247,14 +253,14 @@ class Offer
         return $this;
     }
 
-    public function getIdType(): ?Type
+    public function getSlugOffer(): ?string
     {
-        return $this->idType;
+        return $this->slugOffer;
     }
 
-    public function setIdType(?Type $idType): self
+    public function setSlugOffer(string $slugOffer): self
     {
-        $this->idType = $idType;
+        $this->slugOffer = $slugOffer;
 
         return $this;
     }
@@ -279,6 +285,18 @@ class Offer
     public function setIdUser(?User $idUser): self
     {
         $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    public function getIdType(): ?Category
+    {
+        return $this->idType;
+    }
+
+    public function setIdType(?Category $idType): self
+    {
+        $this->idType = $idType;
 
         return $this;
     }

@@ -4,5 +4,13 @@
 
 {% block body %}
     {{  form_start(form) }}
+    {{form_row(form.pseudoUser)}}
+{{form_row(form.emailUser)}}
+{{form_row(form.firstnameUser)}}
+{{form_row(form.nameUser)}}
+{{form_row(form.birthdateUser)}}
+{{form_row(form.urlImgUser)}}
+{{form_row(form.passwordUser)}}
+{{form_row(form.save)}}
     {{ form_end(form) }}
 {% endblock %}

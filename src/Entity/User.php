@@ -120,7 +120,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Type", mappedBy="idUser")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="idUser")
      */
     private $idType;
 
@@ -294,14 +294,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|Type[]
+     * @return Collection|Category[]
      */
     public function getIdType(): Collection
     {
         return $this->idType;
     }
 
-    public function addIdType(Type $idType): self
+    public function addIdType(Category $idType): self
     {
         if (!$this->idType->contains($idType)) {
             $this->idType[] = $idType;
@@ -311,7 +311,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeIdType(Type $idType): self
+    public function removeIdType(Category $idType): self
     {
         if ($this->idType->removeElement($idType)) {
             $idType->removeIdUser($this);

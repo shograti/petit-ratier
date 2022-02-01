@@ -7,13 +7,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type
+ * Category
  *
- * @ORM\Table(name="type")
- * @ORM\Entity
- * @ORM\Entity(repositoryClass= "App\Repository\TypeRepository")
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass= "App\Repository\CategoryRepository")
  */
-class Type
+class Category
 {
     /**
      * @var int

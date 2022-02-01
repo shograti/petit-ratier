@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offers Admin Dashboard{% endblock %}
+
+{% block body %}
+
+<div class="offer-list">
+    {% for offer in offers %}
+        <p>{{offer.nameOffer}}
+    {% endfor %}
+</div>
+
+{% endblock %}

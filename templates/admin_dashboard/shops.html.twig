@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}shops Admin Dashboard{% endblock %}
+
+{% block body %}
+
+<div class="shop-list">
+    {% for shop in shops %}
+        <p>{{shop.nameShop}}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

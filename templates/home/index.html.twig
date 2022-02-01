@@ -15,9 +15,13 @@
             <p>Quantité : {{offer.quantityOffer}}</p>
        
             <p>Prix avant réduction : {{ offer.initialPrice }}</p>
-            <p>Prix après réduction : {{ offer.soldedPrice }}</p>
-    
-        
+            <p>Prix après réduction : {{ offer.soldedPrice }}</p>   
+            <p>Catégorie : {{offer.idType}}</p>
+            <p>Date de début de l'offre : {{offer.startOffer|date('d-m-Y')}}</p>
+            <p>Date de fin de l'offre : {{offer.endOffer|date('d-m-Y')}}</p>
+            <p>Date de publication de l'offre :{{offer.postDate|date('d-m-Y')}}</p>
+
+
   
  {% endfor %}
 
